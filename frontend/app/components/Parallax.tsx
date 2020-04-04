@@ -1,11 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated, Dimensions, Button } from 'react-native';
+import { StyleSheet, Text, View, Animated, Dimensions } from 'react-native';
 import { ONBOARDING_DATA } from '../data/onboarding-data'; 
-import { XButton } from './XButton';
 
 const { width, height } = Dimensions.get("window");
 
-export class Parallax extends React.Component {
+interface ParallaxProps {
+    navigation: any
+}
+
+export class Parallax extends React.Component<ParallaxProps> {
 
     _scrollX = new Animated.Value(0);
 
@@ -32,7 +35,6 @@ export class Parallax extends React.Component {
                     {ONBOARDING_DATA.map((item, i) => this._renderItem(item, i))}
                     <Animated.View style={[parallax_styles.background, {backgroundColor: interpolatedColor}]}></Animated.View>
                 </Animated.ScrollView>
-                <XButton text='Login with BankID' top={height - 80} left={width/2 - 92}></XButton>
                 <View style={parallax_styles.bullets}>
                     {ONBOARDING_DATA.map((_, i) => {
                         let opacity = position.interpolate({
