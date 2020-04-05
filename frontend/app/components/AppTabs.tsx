@@ -1,11 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AppParamList } from './AppParamList';
-import { Landing } from "../screens/Landing";
 import { Statistics } from "../screens/Statistics";
 import { PreviousTrips } from "../screens/PreviousTrips";
 import { AntDesign } from '@expo/vector-icons';
 import { Settings } from '../screens/Settings';
+import { HomeStack } from './HomeStack';
 
 interface AppTabProps {}
 
@@ -37,7 +37,7 @@ export const AppTabs: React.FC<AppTabProps> = ({}) => {
                 activeBackgroundColor: '#000',
                 inactiveBackgroundColor: '#000',
                 style: {
-                    backgroundColor: '#000',
+                    backgroundColor: '#171717',
                     borderRadius: 60,
                     bottom: 50,
                     height: 50,
@@ -55,7 +55,7 @@ export const AppTabs: React.FC<AppTabProps> = ({}) => {
                 }
             }}
         >
-            <Tabs.Screen name='Landing' component={Landing} />
+            <Tabs.Screen name='Landing' component={HomeStack} />
             <Tabs.Screen name='Statistics' component={Statistics} />
             <Tabs.Screen name='PreviousTrips' component={PreviousTrips} />
             <Tabs.Screen name='Settings' component={Settings} />

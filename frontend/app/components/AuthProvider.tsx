@@ -22,7 +22,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         <AuthContext.Provider value={{
             user,
             login: () => {
-                const mock_user = { name: 'test', age: 10, pnr: '12321', ip: '123.213.213', onboarded: true };
+                const mock_user = { name: 'Emil', age: 23, pnr: '12321', ip: '123.213.213', onboarded: true };
                 setUser(mock_user);
                 AsyncStorage.setItem('user', JSON.stringify(mock_user));
             },
