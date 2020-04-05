@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { View, Animated, StyleSheet, Text, Dimensions, Button } from 'react-native';
+import { View, Animated, StyleSheet, Text, Dimensions, Button, Image } from 'react-native';
 import { HomeParamList, HomeStackNavProps } from './HomeParamList';
 import { AuthContext } from './AuthProvider';
 import { FEED_DATA } from '../data/feed-data';
@@ -139,7 +139,7 @@ function Card({route} : HomeStackNavProps<'Card'>) {
 const _renderItem = (item:any, i:any, navigation:any) => {
     return (
         <View key={item.id} style={[home_stack_styles.item, { height: item.height }]}>
-            <TouchableWithoutFeedback style={home_stack_styles.metaContainer} onPress={() => {
+            <TouchableWithoutFeedback style={[home_stack_styles.metaContainer, {backgroundColor: item.back}]} onPress={() => {
                 navigation.navigate('Card', {
                     id: item.id,
                     title: item.title,
@@ -147,7 +147,6 @@ const _renderItem = (item:any, i:any, navigation:any) => {
                 });
             }}>
                 <Text style={[home_stack_styles.font, home_stack_styles.title]}>{item.title}</Text>
-                {(item.id === 1 || item.id === 2) && <Text>Image..</Text>}
             </TouchableWithoutFeedback>
         </View>
     );
@@ -211,6 +210,11 @@ const home_stack_styles = StyleSheet.create({
         fontWeight: '700',
         marginTop: 20,
         marginLeft: 20
+    },
+    image: {
+        resizeMode: 'contain',
+        width: '100%',
+        height: '100%'
     }
 });
 
